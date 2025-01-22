@@ -1,0 +1,32 @@
+macvlan = {
+  parent = "enp6s0"
+
+  addresses = [
+    "192.168.1.121/24",
+    "192.168.1.122/24",
+    "192.168.1.123/24",
+    "192.168.1.124/24",
+    "192.168.1.125/24",
+    "192.168.1.126/24",
+    "192.168.1.127/24",
+    "192.168.1.128/24",
+    "192.168.1.129/24",
+    "192.168.1.130/24",
+  ]
+
+  netplan_template = <<-EOF
+    network:
+      version: 2
+      renderer: networkd
+      ethernets:
+        eth0:
+          dhcp4: no
+          addresses: $${jsonencode(addresses)}
+          gateway4: 192.168.1.254
+          nameservers:
+            addresses:
+              - 192.168.1.254
+              - 8.8.8.8
+              - 8.8.4.4
+    EOF
+}

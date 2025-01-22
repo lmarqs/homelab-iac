@@ -1,7 +1,5 @@
-module "development" {
-  source = "./development"
-}
+module "modules" {
+  source = "./modules"
 
-module "production" {
-  source = "./production"
+  macvlan = var.macvlan
 }
