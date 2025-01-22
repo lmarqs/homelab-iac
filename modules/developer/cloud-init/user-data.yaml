@@ -1,0 +1,38 @@
+#cloud-config
+
+package_update: true
+package_upgrade: true
+
+groups:
+  - docker
+
+system_info:
+  default_user:
+    name: ubuntu
+    shell: /usr/bin/zsh
+    groups:
+      - docker
+
+packages:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - fzf
+  - git-gui
+  - gitk
+  - gnupg
+  - gpg
+  - lsb-release
+  - unattended-upgrades
+  - wget
+  - zsh
+
+runcmd:
+  - curl -fsSL https://get.docker.com | bash
+  - su - ubuntu -c 'curl -fsSL https://mise.run | sh'
+  - su - ubuntu -c 'curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh'
+  - su - ubuntu -c 'zsh -c "mise use aws-vault"'
+  - su - ubuntu -c 'zsh -c "mise use aws-cli"'
+  - su - ubuntu -c 'zsh -c "mise use --global terraform@1.9.8"'
+
+final_message: "The system is finally up, after $UPTIME seconds"
