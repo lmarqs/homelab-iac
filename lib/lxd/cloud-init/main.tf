@@ -6,7 +6,7 @@ variable "name" {
 variable "project" {
   description = "The project to create the resources in"
   type        = string
-  default     = null
+  default     = "default"
 }
 
 variable "user_data" {

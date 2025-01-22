@@ -9,15 +9,10 @@ variable "project" {
   default     = "default"
 }
 
-variable "parent" {
-  description = "The physical network interface to use for the macvlan"
+variable "storage_pool" {
+  description = "The storage pool to use"
   type        = string
-}
-
-variable "addresses" {
-  description = "The IP address to assign to the macvlan"
-  type        = list(number)
-  default     = []
+  default     = "default"
 }
 
 resource "lxd_profile" "this" {
@@ -25,13 +20,12 @@ resource "lxd_profile" "this" {
   project = var.project
 
   device {
-    name = "eth0"
-    type = "nic"
+    name = "root"
+    type = "disk"
 
     properties = {
-      name    = "eth0"
-      nictype = "macvlan"
-      parent  = var.parent
+      pool = var.storage_pool
+      path = "/"
     }
   }
 }
