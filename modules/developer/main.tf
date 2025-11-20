@@ -34,6 +34,17 @@ resource "lxd_instance" "this" {
   }
 }
 
+resource "lxd_instance_file" "zshrc" {
+  instance           = lxd_instance.this.name
+  content            = file("${path.module}/.zshrc")
+  target_path        = "/home/developer/.zshrc"
+  mode               = "0755"
+  uid                = "1000"
+  gid                = "1000"
+  create_directories = true
+}
+
+
 module "cloudinit" {
   source = "../../lib/lxd/cloud-init"
 
