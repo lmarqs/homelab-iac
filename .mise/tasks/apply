@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#MISE description="Apply Terraform module"
+#USAGE flag "--target <target>" help="Terraform target to apply. If not specified, all modules will be applied"
+#USAGE flag "--auto-approve" default="false" help="Automatically approve the apply operation"
+
+set -ex
+
+TARGET="$usage_target"
+AUTO_APPROVE="$usage_auto_approve"
+
+TERRAFORM_CLI_ARGS=""
+
+if [ -n "$TARGET" ]; then
+  TERRAFORM_CLI_ARGS="$TERRAFORM_CLI_ARGS -target $TARGET"
+fi
+
+if [ "$AUTO_APPROVE" = "true" ]; then
+  TERRAFORM_CLI_ARGS="$TERRAFORM_CLI_ARGS -auto-approve"
+fi
+
+echo "Applying Terraform with arguments: $TERRAFORM_CLI_ARGS"
+
+terraform apply $TERRAFORM_CLI_ARGS
