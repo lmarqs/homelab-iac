@@ -109,3 +109,5 @@ export LANG=en_US.UTF-8
 
 eval "$(~/.local/bin/mise activate zsh)"
 eval "$(mise activate zsh)"
+
+export DOCKER_HOST="unix:///mnt/docker.sock"
