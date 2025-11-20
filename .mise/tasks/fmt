@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#MISE description="Format Terraform modules"
+
+set -ex
+
+terraform fmt -recursive
