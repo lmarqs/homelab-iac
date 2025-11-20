@@ -111,3 +111,9 @@ eval "$(~/.local/bin/mise activate zsh)"
 eval "$(mise activate zsh)"
 
 export DOCKER_HOST="unix:///mnt/docker.sock"
+
+export EDITOR="nvim"
+
+export NODE_OPTIONS="--max-old-space-size=4096"
+
+eval "$(ssh-agent -s)" > /dev/null
