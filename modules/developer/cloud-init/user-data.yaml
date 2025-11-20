@@ -4,14 +4,22 @@ package_update: true
 package_upgrade: true
 
 groups:
+  - developer
   - docker
 
-system_info:
-  default_user:
-    name: ubuntu
-    shell: /usr/bin/zsh
+users:
+  - default
+  - name: developer
+    gecos: Developer User
+    primary_group: developer
     groups:
       - docker
+    ssh_import_id:
+      - gh:lmarqs
+    lock_passwd: false
+    passwd: '$6$BH/Uf.zD/d1OGI..$93VM/q5r0uh.weArZPOQgmyOyLODQHtZSEDwmMcoEG.5TtNaEj2v6ZOEu9r6Y9p/UIcRFvmnSBphyanw0Bgcc/'
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
 
 packages:
   - apt-transport-https
