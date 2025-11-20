@@ -119,6 +119,8 @@ fi
 eval "$(~/.local/bin/mise activate bash)"
 eval "$(mise activate bash)"
 
+export AWS_VAULT_BACKEND=file
+
 export DOCKER_HOST="unix:///mnt/docker.sock"
 
 export EDITOR="nvim"
