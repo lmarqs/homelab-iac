@@ -37,6 +37,9 @@ packages:
 
 runcmd:
   - curl -fsSL https://get.docker.com | bash
+  - sudo systemctl stop docker.socket
+  - sudo systemctl disable docker.socket
+
   - su - ubuntu -c 'curl -fsSL https://mise.run | sh'
   - su - ubuntu -c 'curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh'
   - su - ubuntu -c 'zsh -c "mise use aws-vault"'
