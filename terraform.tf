@@ -1,12 +1,7 @@
 terraform {
   required_version = "~> 1.13"
 
-  backend "remote" {
-    organization = "lmarqs"
-
-    workspaces {
-      name = "homelab-iac"
-    }
+  backend "local" {
   }
 
   required_providers {
