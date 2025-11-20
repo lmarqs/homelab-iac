@@ -116,8 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-eval "$(~/.local/bin/mise activate zsh)"
-eval "$(mise activate zsh)"
+eval "$(~/.local/bin/mise activate bash)"
+eval "$(mise activate bash)"
 
 export DOCKER_HOST="unix:///mnt/docker.sock"
 
