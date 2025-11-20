@@ -34,10 +34,10 @@ resource "lxd_instance" "this" {
   }
 }
 
-resource "lxd_instance_file" "zshrc" {
+resource "lxd_instance_file" "bashrc" {
   instance           = lxd_instance.this.name
-  content            = file("${path.module}/.zshrc")
-  target_path        = "/home/developer/.zshrc"
+  content            = file("${path.module}/.bashrc")
+  target_path        = "/home/developer/.bashrc"
   mode               = "0755"
   uid                = "1000"
   gid                = "1000"

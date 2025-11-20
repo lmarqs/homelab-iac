@@ -19,7 +19,6 @@ users:
     lock_passwd: false
     passwd: '$6$BH/Uf.zD/d1OGI..$93VM/q5r0uh.weArZPOQgmyOyLODQHtZSEDwmMcoEG.5TtNaEj2v6ZOEu9r6Y9p/UIcRFvmnSBphyanw0Bgcc/'
     sudo: ALL=(ALL) NOPASSWD:ALL
-    shell: /bin/bash
 
 packages:
   - apt-transport-https
@@ -33,7 +32,6 @@ packages:
   - lsb-release
   - unattended-upgrades
   - wget
-  - zsh
 
 runcmd:
   - curl -fsSL https://get.docker.com | bash
@@ -41,10 +39,8 @@ runcmd:
   - sudo systemctl disable docker.socket
 
   - su - ubuntu -c 'curl -fsSL https://mise.run | sh'
-  - su - ubuntu -c 'curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh'
-  - su - ubuntu -c 'zsh -c "mise use aws-vault"'
-  - su - ubuntu -c 'zsh -c "mise use aws-cli"'
-  - su - ubuntu -c 'zsh -c "mise use --global terraform@1.9.8"'
+  - su - ubuntu -c 'sh -c "mise use --global aws-vault"'
+  - su - ubuntu -c 'sh -c "mise use --global aws-cli"'
 
   - sudo mkdir -p /etc/apt/keyrings
   - curl -fsSL https://us-central1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/antigravity-repo-key.gpg
