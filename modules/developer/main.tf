@@ -9,7 +9,8 @@ resource "lxd_instance" "this" {
   config = {
     "boot.autostart" = true
 
-    # "security.privileged" = true
+    "security.nesting" = true
+    "security.privileged" = true
   }
 
   limits = {
